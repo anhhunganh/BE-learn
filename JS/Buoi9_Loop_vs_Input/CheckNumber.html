@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nhậm số bạn muốn kiểm tra
+    <form action="">
+        <input type="text" placeholder="Nhập số" id="input_number" onkeypress="return searchKeyPress(event);"/>
+        <button id="enter" type="button" onclick="output_number()">Kiểm tra</button>
+    </form>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+</body>
+
+<script>
+    function searchKeyPress(e) {
+        e = e || window.event;
+        if(e.keyCode == 13){
+            document.getElementById('enter').click();
+            return false;
+        }
+        return true;
+    }
+</script>
+<script>
+    let count = 1;
+
+    function output_number() {
+        let arr = [];
+        let prime;
+        let x = true;
+        let number = document.getElementById('input_number').value;
+        
+
+        //Kiểm tra số vừa nhập có phải số nguyên tố không
+        for(i = 2; i <= number/2; i++){
+            prime = number % i;
+            if(prime == 0){
+                x = false;
+                
+            }
+        }
+        if(prime){
+            document.getElementById('div2').innerHTML = 'Đây là số nguyên tố';
+        }else {
+            document.getElementById('div2').innerHTML = 'Đây không phải là số nguyên tố';
+        }
+
+        //kiểm tra chẵn lẻ 
+        if(number % 2 == 0){
+            document.getElementById('div1').innerHTML = 'Đây là số chẵn';
+        }else if (number % 2 == 1) {
+            document.getElementById('div1').innerHTML = 'Đây là số lẻ';
+        }else{
+            document.getElementById('div1').innerHTML = 'Đây là số thập phân';
+        }
+
+        // đếm số lần nhập số
+        document.getElementById('div3').innerHTML = 'Số lần bạn đã nhập số: ' + count++;
+    
+        //in từ 1 đến số vừa nhập nếu số vừa nhập > 0
+        // in từ số đó đến 1 nếu số đó < 0
+        if(number > 0){
+            for(i = 1; i <= number; i++){
+                arr.push(i);
+            }
+            document.getElementById('div4').innerHTML = arr;
+        }else{
+            for(i = number; i <= 1; i++){
+                arr.push(i);
+            }
+            document.getElementById('div4').innerHTML = arr;
+        }
+    }
+</script>
+</html>

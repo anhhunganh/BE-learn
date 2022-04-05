@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action=""  >
+        
+        Nhập số bạn muốn xem
+        <input type="text" id="input_so" onkeypress="return searchKeyPress(event);"/>
+        <button  id="enter" onclick="in_ra()" type="button">Kiểm tra</button>
+    </form>
+
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="chuoi"></div>
+</body>
+<script>
+    function searchKeyPress(e)
+    {
+        e = e || window.event;
+        if (e.keyCode == 13)
+        {
+            document.getElementById('enter').click();
+            return false;
+        }
+        return true;
+    }
+</script>
+<script type="text/javascript">
+        let count = 1;
+        function in_ra() {
+            let x = true;
+            let so_nguyen_to;
+            let chuoi = [];
+            let so = document.getElementById('input_so').value;
+
+            for(i = 2; i <= so/2; i++){
+                so_nguyen_to = so % i;
+                if(so_nguyen_to == 0){
+                    
+                    x = false;
+                    break;
+                }
+            }
+            if(so_nguyen_to){
+                document.getElementById('div1').innerHTML = 'Là số nguyên tố';
+            }else {
+                document.getElementById('div1').innerHTML = 'Không phải là số nguyên tố';
+            }
+
+            if(so % 2 == 0){
+                document.getElementById('div2').innerHTML = 'Là số chẵn';
+            }else if(so % 2 == 1){
+                document.getElementById('div2').innerHTML = 'Là số lẻ';
+            }else{
+                document.getElementById('div2').innerHTML = 'Là số thập phân';
+            }
+            document.getElementById('div3').innerHTML = 'Số lần nhập số: ' + count++;
+
+            if(so > 0){
+				for (var i = 1; i <= so; i++) {
+					chuoi.push(i);
+				}
+				document.getElementById('chuoi').innerHTML = chuoi;
+			} else {
+				for (var i = so; i <= 1; i++) {
+					chuoi.push(i);
+				}
+				document.getElementById('chuoi').innerHTML = chuoi;
+            }
+            
+        }
+</script>
+</html>

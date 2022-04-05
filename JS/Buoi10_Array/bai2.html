@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Phát sinh mảng và tính toán
+    <form action="">
+        <input type="number" id="input">
+        <button type="button" onclick="phat_sinh()">Phát sinh và tính toán</button>
+    </form>
+
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+</body>
+
+<script>
+    function phat_sinh() {
+        let mang = [];
+        let so_ngau_nhien;
+        let so = parseInt(document.getElementById('input').value);
+
+        for(i = 0; i < so; i++){
+            so_ngau_nhien = Math.floor(Math.random() * 20 );
+            mang.push(so_ngau_nhien);
+        }
+        let so_nho_nhat = mang[0];
+        let so_lon_nhat = mang[0];
+        let tong = 0;
+        for(i = 1; i < mang.length; i++){
+            if(so_lon_nhat < mang[i]){
+                so_lon_nhat = mang[i];
+            }
+            if(so_nho_nhat > mang[i]){
+                so_nho_nhat = mang[i];
+            }
+            tong += mang[i];
+        }
+
+        document.getElementById('div1').innerHTML = mang;
+        document.getElementById('div2').innerHTML = 'Số lớn nhất trong mảng là: ' + so_lon_nhat;
+        document.getElementById('div3').innerHTML = 'Số nhỏ nhất trong mảng là: ' + so_nho_nhat;
+        document.getElementById('div4').innerHTML = 'Tổng các phần tử trong mảng là: ' + tong;
+    }
+</script>
+</html>

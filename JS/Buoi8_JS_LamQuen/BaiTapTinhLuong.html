@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+
+    <script>
+        let luong = 14;
+        let thue;
+
+        if (luong == 15){
+            thue = luong * 30 / 100;
+            document.write('Thuế thu nhập là: '+ thue);
+        }
+        else if (luong < 15 && luong > 7){
+            thue = luong * 20 /100;
+            document.write('Thuế thu nhập là: '+ thue);
+        }else if(luong < 7 && luong > 0){
+            document.write('Thuế thu nhập là: '+ thue);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+#div_tong{
+    width: 1500px;
+    height: 800px;
+    /* background: pink; */
+}
+#div_trai{
+    width: 200px;
+    height: 85%;
+    background: black;
+    float: left;
+    position: relative;
+}
+#div_cau_vong{
+    width: 50px;
+    height: 85%;
+    background-image: url('./IMAGES/soc.jpg');
+    float: left;
+}
+#div_phai{
+    width: 1200px;
+    height: 100%;
+    background-image: url('./IMAGES/sua1.gif');
+    float: left;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#div_table{
+    padding-top: 80px;
+    padding-left: 200px;
+    float: left;
+}
+table{
+    background: lightgreen;
+    padding: 20px;
+}
+.anh_sua{
+    width: 200px;
+    height: 80%;
+    float: left;
+    padding-left: 50px;
+}
