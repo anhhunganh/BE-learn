@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <form action="">
+            <!-- Input name -->
+            <div id="form__name" class="">
+                <div class="name">Họ Tên</div>
+                <input type="text" id="input-name" placeholder="Nguyễn Văn A">
+                <div id="name-error" class="error-center"></div>
+            </div>
+
+            <!-- Input DoB -->
+            <div id="form__date" class="mt-16">
+                <div class="name">Ngày sinh</div>
+                <input type="date" id="date-input" style="margin-right: 56px;">
+                <div id="date-error" class="error-center"></div>
+            </div>
+
+            <!-- Input Gender -->
+            <div id="form__gender" class="mt-16">
+                <div class="name">Giới tính</div>
+                <input type="radio"  name="gender">Nam 
+                <input type="radio"  name="gender">Nữ 
+                <input type="radio"  name="gender">Khác 
+                <div id="gender-error" class="error-center"></div>
+            </div>
+
+            <!-- Input Email -->
+            <div id="form__email" class="mt-16">
+                <div class="name">Email</div>
+                <input type="email" id="email-input" placeholder="example@email.com">
+                <div id="email-error" class="error-center"></div>
+            </div>
+
+            <!-- Input Password -->
+            <div id="form__pass" class="mt-16">
+                <div class="name">Password</div>
+                <input type="password" name="" id="pass-input">
+                <div id="pass-error" class="error-center"></div>
+            </div>
+
+            <!-- select hobbies -->
+            <div id="select__hobbies" class="mt-16">
+                <div class="name">Sở thích</div>
+                <select name="" id="select__hobbies">
+                    <option value="">Nghe nhạc</option>
+                    <option value="">Chơi game</option>
+                    <option value="">Đọc sách</option>
+                </select>
+            </div>
+
+            <!-- Button -->
+            <div id="btn-submit-form" class="mt-16">
+                <button class="btn-submit" onclick="return kiem_tra()">Đăng ký</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>
+    function kiem_tra(){
+        let check_error = false;
+
+        // Check name
+        let input_name=document.getElementById('input-name').value;
+        if(input_name.length === 0){
+            document.getElementById('name-error').innerHTML = 'Tên bạn không nên để trống!';
+            check_error = true;
+        }else {
+            let regex_name = /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹ]*)*$/
+
+            if(regex_name.test(input_name) == false){
+                document.getElementById('name-error').innerHTML = 'Tên bắt đầu bằng chữ in hoa';
+                check_error = true;
+            }else{
+                document.getElementById('name-error').innerHTML = '';
+            }
+        }
+
+        // Check date of bỉrth
+        let input_gender = document.getElementById('date-input').value;
+        if(input_gender.length === 0){
+            document.getElementById('date-error').innerHTML = 'Ngày sinh không nên để trống!'
+            check_error = true;
+        }else{
+                document.getElementById('date-error').innerHTML = '';
+        }
+
+        // Check gender
+        let gender_arr = document.getElementsByName('gender');
+        let check_gender = false;
+        for(let i = 0; i < gender_arr.length; i++){
+            if(gender_arr[i].checked){
+                check_gender = true;
+            }
+        }
+
+        if(check_gender == false){
+            document.getElementById('gender-error').innerHTML = 'Bạn chưa chọn giới tính :<';
+            check_error = true;
+        }else{
+                document.getElementById('gender-error').innerHTML = '';
+        }
+
+        // Check email
+        let input_email = document.getElementById('email-input').value;
+        if(input_email.length === 0){
+            document.getElementById('email-error').innerHTML = 'Email không nên để trống!';
+                check_error = true;
+        }else{
+            document.getElementById('email-error').innerHTML = '';
+        }
+
+        // Check password
+        let input_pass = document.getElementById('pass-input').value;
+        if(input_pass.length === 0){
+            document.getElementById('pass-error').innerHTML = 'Password không nên để trống';
+            check_error = true;
+        }else if(input_pass.length < 8){
+            document.getElementById('pass-error').innerHTML = 'Password không nên ít hơn 8 ký tự';
+            check_error = true;
+        }else {
+                document.getElementById('pass-error').innerHTML = '';
+
+
+        //     // regex-pass
+        //     let regex_pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;         
+        //                     // (?=.*\d) should contain at least one digit
+        //                     // (?=.*[a-z]) should contain at least one lower case
+        //                     // (?=.*[A-Z])  should contain at least one upper case
+        //                     // [a-zA-Z0-9]{8,} should contain at least 8 from the mentioned characters
+                        
+        //     if(regex_pass.test(input_pass) == false){
+        //         document.getElementById('pass-error').innerHTML = 'Mật khẩu của bạn không đủ mạnh';
+        //         check_error = true;
+        //     }else{
+        //         document.getElementById('pass-error').innerHTML = '';
+        //     }
+        }
+
+        if(check_error){
+            return false;
+        }
+    }
+</script>
+</html>
